@@ -87,7 +87,7 @@ resource "aws_elasticache_replication_group" "default" {
   node_type                     = var.instance_type
   port                          = var.port
   parameter_group_name          = join("", aws_elasticache_parameter_group.default.*.name)
-  availability_zones            = slice(var.availability_zones, 0, var.cluster_size)
+#  availability_zones            = slice(var.availability_zones, 0, var.cluster_size)
   automatic_failover_enabled    = var.automatic_failover_enabled
   subnet_group_name             = local.elasticache_subnet_group_name
   security_group_ids            = var.use_existing_security_groups ? var.existing_security_groups : [join("", aws_security_group.default.*.id)]
